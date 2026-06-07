@@ -1,17 +1,56 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('adminlte::page')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Jersey POS Dashboard</h1>
+@endsection
+
+@section('content')
+    <div class="row">
+        <div class="col-md-3">
+            <div class="info-box bg-success">
+                <span class="info-box-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Today's Orders</span>
+                    <span class="info-box-number">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="info-box bg-primary">
+                <span class="info-box-icon">
+                    <i class="fas fa-money-bill"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Today's Revenue</span>
+                    <span class="info-box-number">৳ 0</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="info-box bg-warning">
+                <span class="info-box-icon">
+                    <i class="fas fa-tshirt"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Total Products</span>
+                    <span class="info-box-number">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="info-box bg-danger">
+                <span class="info-box-icon">
+                    <i class="fas fa-users"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Total Customers</span>
+                    <span class="info-box-number">0</span>
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection
