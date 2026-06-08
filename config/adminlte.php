@@ -243,19 +243,19 @@ return [
         ],
         [
             'text' => 'New Sale',
-            'url' => 'pos',
+            'url' => '#',
             'icon' => 'fas fa-fw fa-cash-register',
             'label' => 'SELL',
             'label_color' => 'success',
         ],
         [
             'text' => 'Products',
-            'url' => 'products',
+            'url' => '#',
             'icon' => 'fas fa-fw fa-tshirt',
         ],
         [
             'text' => 'Inventory',
-            'url' => 'inventory',
+            'url' => '#',
             'icon' => 'fas fa-fw fa-boxes',
         ],
         [
@@ -265,7 +265,7 @@ return [
         ],
         [
             'text' => 'Customers',
-            'url' => 'customers',
+            'url' => '#',
             'icon' => 'fas fa-fw fa-users',
         ],
         [
@@ -273,7 +273,7 @@ return [
         ],
         [
             'text' => 'Sales Report',
-            'url' => 'reports',
+            'url' => '#',
             'icon' => 'fas fa-fw fa-chart-bar',
         ],
     ],
