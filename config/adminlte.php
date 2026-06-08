@@ -52,7 +52,7 @@ return [
     'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
-    'layout_dark_mode' => null,
+    'layout_dark_mode' => true,
 
     /*
      * |--------------------------------------------------------------------------
@@ -117,7 +117,7 @@ return [
      * |--------------------------------------------------------------------------
      */
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -235,14 +235,14 @@ return [
     'menu' => [
         [
             'text' => 'Dashboard',
-            'url' => 'home',
+            'url' => 'dashboard',
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
             'header' => 'SHOP MANAGEMENT',
         ],
         [
-            'text' => 'POS / New Sale',
+            'text' => 'New Sale',
             'url' => 'pos',
             'icon' => 'fas fa-fw fa-cash-register',
             'label' => 'SELL',
