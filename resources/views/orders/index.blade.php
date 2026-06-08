@@ -24,6 +24,7 @@
                         <th>Order ID</th>
                         <th>Customer</th>
                         <th>Jersey</th>
+                        <th>Name & Number(Print) </th>
                         <th>Total</th>
                         <th>Date</th>
                         <th>Status</th>
@@ -37,6 +38,8 @@
                         <td><b>{{ $order->order_number }}</b></td>
                         <td>{{ $order->customer_name }}</td>
                         <td>{{ $order->jersey_name }}</td>
+                        <td>{{ $order->name_number }}</td>
+
                         <td>৳{{ number_format($order->total_price, 2) }}</td>
                         <td>{{ $order->created_at->format('d M Y') }}</td>
                         <td>
