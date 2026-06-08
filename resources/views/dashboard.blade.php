@@ -8,6 +8,7 @@
 
 @section('content')
     <div class="row">
+
         <div class="col-md-3">
             <div class="info-box bg-success">
                 <span class="info-box-icon">
@@ -15,10 +16,24 @@
                 </span>
                 <div class="info-box-content">
                     <span class="info-box-text">Today's Orders</span>
-                    <span class="info-box-number">0</span>
+                    <span class="info-box-number">{{ $todayOrders }}</span>
                 </div>
             </div>
         </div>
+
+        <div class="col-md-3">
+            <div class="info-box bg-primary">
+                <span class="info-box-icon">
+                    <i class="fas fa-list-alt"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Total Orders</span>
+                    <span class="info-box-number">{{ $totalOrders }}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
         <div class="col-md-3">
             <div class="info-box bg-primary">
                 <span class="info-box-icon">
@@ -47,7 +62,7 @@
                     <i class="fas fa-users"></i>
                 </span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Total Customers</span>
+                    <span class="info-box-text">Total Orders</span>
                     <span class="info-box-number">0</span>
                 </div>
             </div>

@@ -2,13 +2,18 @@
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Order;
 
 Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('orders', OrderController::class);
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $totalOrders   = Order::count();
+    $todayOrders   = Order::whereDate('created_at', today())->count();
+
+    return view('dashboard', compact('totalOrders', 'todayOrders'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
