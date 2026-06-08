@@ -12,6 +12,23 @@
     @error('jersey_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
 </div>
 
+
+
+
+<div class="form-group">
+    <label>Name & Number</label>
+    <input type="text" name="name_number" class="form-control @error('name_number') is-invalid @enderror"
+        value="{{ old('name_number', $order->name_number ?? '') }}">
+    @error('name_number') <div class="invalid-feedback">{{ $message }}</div> @enderror
+</div>
+
+
+
+
+
+
+
+
 <div class="form-group">
     <label>Total Price (৳)</label>
     <input type="number" step="0.01" name="total_price" class="form-control @error('total_price') is-invalid @enderror"

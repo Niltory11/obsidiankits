@@ -9,8 +9,19 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::latest()->paginate(10);
-        return view('orders.index', compact('orders'));
+        $orders        = Order::latest()->paginate(10);
+        $totalOrders   = Order::count();
+        $todayOrders   = Order::whereDate('created_at', today())->count();
+        $pendingOrders = Order::where('status', 'pending')->count();
+        $paidOrders    = Order::where('payment_status', 'paid')->count();
+
+        return view('orders.index', compact(
+            'orders',
+            'totalOrders',
+            'todayOrders',
+            'pendingOrders',
+            'paidOrders'
+        ));
     }
 
     public function create()
@@ -23,6 +34,7 @@ class OrderController extends Controller
         $request->validate([
             'customer_name'  => 'required|string|max:255',
             'jersey_name'    => 'required|string|max:255',
+            'name_number'    => 'nullable|string|max:255',
             'total_price'    => 'required|numeric|min:0',
             'status'         => 'required|in:pending,processing,shipped,delivered,cancelled',
             'payment_status' => 'required|in:unpaid,paid,refunded',
@@ -32,6 +44,7 @@ class OrderController extends Controller
             'order_number'   => 'ORD-' . strtoupper(uniqid()),
             'customer_name'  => $request->customer_name,
             'jersey_name'    => $request->jersey_name,
+            'name_number'    => $request->name_number ?? null,
             'total_price'    => $request->total_price,
             'status'         => $request->status,
             'payment_status' => $request->payment_status,
@@ -55,12 +68,20 @@ class OrderController extends Controller
         $request->validate([
             'customer_name'  => 'required|string|max:255',
             'jersey_name'    => 'required|string|max:255',
+            'name_number'    => 'nullable|string|max:255',
             'total_price'    => 'required|numeric|min:0',
             'status'         => 'required|in:pending,processing,shipped,delivered,cancelled',
             'payment_status' => 'required|in:unpaid,paid,refunded',
         ]);
 
-        $order->update($request->all());
+        $order->update([
+            'customer_name'  => $request->customer_name,
+            'jersey_name'    => $request->jersey_name,
+            'name_number'    => $request->name_number ?? null,
+            'total_price'    => $request->total_price,
+            'status'         => $request->status,
+            'payment_status' => $request->payment_status,
+        ]);
 
         return redirect()->route('orders.index')->with('success', 'Order updated successfully!');
     }
