@@ -12,8 +12,21 @@ Route::resource('orders', OrderController::class);
 Route::get('/dashboard', function () {
     $totalOrders   = Order::count();
     $todayOrders   = Order::whereDate('created_at', today())->count();
+    $pendingOrders = Order::where('status', 'pending')->count();
+    $paidOrders    = Order::where('payment_status', 'paid')->count();
+    $totalRevenue  = Order::where('payment_status', 'paid')->sum('total_price');
+    $todayRevenue  = Order::where('payment_status', 'paid')
+                        ->whereDate('created_at', today())
+                        ->sum('total_price');
 
-    return view('dashboard', compact('totalOrders', 'todayOrders'));
+    return view('dashboard', compact(
+        'totalOrders',
+        'todayOrders',
+        'pendingOrders',
+        'paidOrders',
+        'totalRevenue',
+        'todayRevenue'
+    ));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

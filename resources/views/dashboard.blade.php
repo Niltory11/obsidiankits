@@ -41,7 +41,9 @@
                 </span>
                 <div class="info-box-content">
                     <span class="info-box-text">Today's Revenue</span>
-                    <span class="info-box-number">৳ 0</span>
+                    
+                    <span class="info-box-number">{{ $todayRevenue }}</span>
+                    
                 </div>
             </div>
         </div>
@@ -59,11 +61,11 @@
         <div class="col-md-3">
             <div class="info-box bg-danger">
                 <span class="info-box-icon">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-money-bill"></i>
                 </span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Total Orders</span>
-                    <span class="info-box-number">0</span>
+                    <span class="info-box-text">Total Revenue</span>
+                    <span class="info-box-number">{{ $totalRevenue }}</span>
                 </div>
             </div>
         </div>
