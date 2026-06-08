@@ -23,8 +23,12 @@
                     <tr>
                         <th>Order ID</th>
                         <th>Customer</th>
+                        <th>Number</th>
+                        <th>Address</th>
                         <th>Jersey</th>
+                        <th>QTY</th>
                         <th>Name & Number(Print) </th>
+                        
                         <th>Total</th>
                         <th>Date</th>
                         <th>Status</th>
@@ -37,10 +41,15 @@
                     <tr>
                         <td><b>{{ $order->order_number }}</b></td>
                         <td>{{ $order->customer_name }}</td>
+                        <td>{{$order->customer_number}}</th>
+                        <th>{{$order->customer_address}}</th>
                         <td>{{ $order->jersey_name }}</td>
+                        <th>{{$order->qty}}</th>
                         <td>{{ $order->name_number }}</td>
+                        
 
                         <td>৳{{ number_format($order->total_price, 2) }}</td>
+                        
                         <td>{{ $order->created_at->format('d M Y') }}</td>
                         <td>
                             @php

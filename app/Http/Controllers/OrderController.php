@@ -32,22 +32,28 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'customer_name'  => 'required|string|max:255',
-            'jersey_name'    => 'required|string|max:255',
-            'name_number'    => 'nullable|string|max:255',
-            'total_price'    => 'required|numeric|min:0',
-            'status'         => 'required|in:pending,processing,shipped,delivered,cancelled',
-            'payment_status' => 'required|in:unpaid,paid,refunded',
+            'customer_name'    => 'required|string|max:255',
+            'customer_number'  => 'nullable|string|max:20',
+            'customer_address' => 'nullable|string|max:500',
+            'jersey_name'      => 'required|string|max:255',
+            'name_number'      => 'nullable|string|max:255',
+            'qty'              => 'required|integer|min:1',
+            'total_price'      => 'required|numeric|min:0',
+            'status'           => 'required|in:pending,processing,shipped,delivered,cancelled',
+            'payment_status'   => 'required|in:unpaid,paid,refunded',
         ]);
 
         Order::create([
-            'order_number'   => 'ORD-' . strtoupper(uniqid()),
-            'customer_name'  => $request->customer_name,
-            'jersey_name'    => $request->jersey_name,
-            'name_number'    => $request->name_number ?? null,
-            'total_price'    => $request->total_price,
-            'status'         => $request->status,
-            'payment_status' => $request->payment_status,
+            'order_number'     => 'ORD-' . strtoupper(uniqid()),
+            'customer_name'    => $request->customer_name,
+            'customer_number'  => $request->customer_number,
+            'customer_address' => $request->customer_address,
+            'jersey_name'      => $request->jersey_name,
+            'name_number'      => $request->name_number ?? null,
+            'qty'              => $request->qty,
+            'total_price'      => $request->total_price,
+            'status'           => $request->status,
+            'payment_status'   => $request->payment_status,
         ]);
 
         return redirect()->route('orders.index')->with('success', 'Order created successfully!');
@@ -66,21 +72,27 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         $request->validate([
-            'customer_name'  => 'required|string|max:255',
-            'jersey_name'    => 'required|string|max:255',
-            'name_number'    => 'nullable|string|max:255',
-            'total_price'    => 'required|numeric|min:0',
-            'status'         => 'required|in:pending,processing,shipped,delivered,cancelled',
-            'payment_status' => 'required|in:unpaid,paid,refunded',
+            'customer_name'    => 'required|string|max:255',
+            'customer_number'  => 'nullable|string|max:20',
+            'customer_address' => 'nullable|string|max:500',
+            'jersey_name'      => 'required|string|max:255',
+            'name_number'      => 'nullable|string|max:255',
+            'qty'              => 'required|integer|min:1',
+            'total_price'      => 'required|numeric|min:0',
+            'status'           => 'required|in:pending,processing,shipped,delivered,cancelled',
+            'payment_status'   => 'required|in:unpaid,paid,refunded',
         ]);
 
         $order->update([
-            'customer_name'  => $request->customer_name,
-            'jersey_name'    => $request->jersey_name,
-            'name_number'    => $request->name_number ?? null,
-            'total_price'    => $request->total_price,
-            'status'         => $request->status,
-            'payment_status' => $request->payment_status,
+            'customer_name'    => $request->customer_name,
+            'customer_number'  => $request->customer_number,
+            'customer_address' => $request->customer_address,
+            'jersey_name'      => $request->jersey_name,
+            'name_number'      => $request->name_number ?? null,
+            'qty'              => $request->qty,
+            'total_price'      => $request->total_price,
+            'status'           => $request->status,
+            'payment_status'   => $request->payment_status,
         ]);
 
         return redirect()->route('orders.index')->with('success', 'Order updated successfully!');

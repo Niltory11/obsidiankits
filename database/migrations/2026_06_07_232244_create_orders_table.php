@@ -11,8 +11,11 @@ return new class extends Migration {
             $table->id();
             $table->string('order_number')->unique();
             $table->string('customer_name');
+            $table->integer('customer_number');
+            $table->string('customer_address');
             $table->string('jersey_name');
             $table->string('name_number')->nullable();
+            $table->integer('qty');
             $table->decimal('total_price', 10, 2);
             $table->enum('status', ['pending', 'processing', 'shipped', 'delivered', 'cancelled'])->default('pending');
             $table->enum('payment_status', ['unpaid', 'paid', 'refunded'])->default('unpaid');

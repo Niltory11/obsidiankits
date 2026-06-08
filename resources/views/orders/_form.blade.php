@@ -5,6 +5,25 @@
     @error('customer_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
 </div>
 
+
+<div class="form-group">
+    <label>Customer Number</label>
+    <input type="number" name="customer_number" class="form-control @error('customer_number') is-invalid @enderror"
+        value="{{ old('customer_number', $order->customer_number ?? '') }}">
+    @error('customer_number') <div class="invalid-feedback">{{ $message }}</div> @enderror
+</div>
+
+
+<div class="form-group">
+    <label>Customer Add.</label>
+    <input type="text" name="customer_address" class="form-control @error('customer_address') is-invalid @enderror"
+        value="{{ old('customer_address', $order->customer_address ?? '') }}">
+    @error('customer_address') <div class="invalid-feedback">{{ $message }}</div> @enderror
+</div>
+
+
+
+
 <div class="form-group">
     <label>Jersey Name</label>
     <input type="text" name="jersey_name" class="form-control @error('jersey_name') is-invalid @enderror"
@@ -24,6 +43,12 @@
 
 
 
+<div class="form-group">
+    <label>QTY</label>
+    <input type="number" name="qty" class="form-control @error('qty') is-invalid @enderror"
+        value="{{ old('qty', $order->qty ?? '') }}">
+    @error('qty') <div class="invalid-feedback">{{ $message }}</div> @enderror
+</div>
 
 
 
